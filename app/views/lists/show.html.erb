@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @list.name %>
+</p>
+
+<h3>Network Partners</h3>
+<ul>
+	<% @list.network_partners.order('name ASC').each do |network_partner| %>
+		<li><%= network_partner.full_name %></li>
+	<% end %>
+</ul>
+
+<h3>Contacts (Ordered by surname)</h3>
+<ul>
+	<% @list.contacts.order('last_name ASC').each do |contact| %>
+		<li><%= contact.full_name %> (<%= contact.email %>)</li>
+	<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

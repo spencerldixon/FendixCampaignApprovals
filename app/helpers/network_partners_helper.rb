@@ -1,0 +1,2 @@
+module NetworkPartnersHelper
+end

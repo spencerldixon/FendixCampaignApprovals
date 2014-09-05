@@ -1,0 +1,74 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand">Fendix Media</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!--li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li-->
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "All Pages", pages_path %></li>
+              <li><%= link_to "Create a Page", new_page_path %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Approval Units <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "All Approval Units", approval_units_path %></li>
+              <li><%= link_to "Create an Approval Unit", new_approval_unit_path %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Network Partners <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "All Network Partners", network_partners_path %></li>
+              <li><%= link_to "Create Network Partner", new_network_partner_path %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "All Contacts", contacts_path %></li>
+              <li><%= link_to "Create a Contact", new_contact_path %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "All Lists", lists_path %></li>
+              <li><%= link_to "Create a List", new_list_path %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right"> 
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <%= current_user.first_name.titleize %>!<span class="caret"></span></a>
+            <!--ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li-->
+        <% end %>
+
+        <li><a href="mailto:spencerlloyddixon@gmail.com">Contact</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

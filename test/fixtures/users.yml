@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid_user:
+  first_name: David
+  last_name: Davidson
+  admin: false
+  email: valid@test.com
+
+nil_user:
+  first_name:
+  last_name:
+  admin:
+  email: invalid@test.com

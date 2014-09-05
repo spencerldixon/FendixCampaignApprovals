@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>Listing Pages</h1>
+</div>
+
+
+<%= button_to 'New Page', new_page_path, method: :get, class: "btn btn-primary" %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created By</th>
+      <th>Status</th>
+      <th>Progress</th>
+      <th>Responses</th>
+      <th>Approval Units</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.name %></td>
+        <td><%= page.user.first_name %></td>
+        <td><%= page.status %></td>
+        <td></td>
+        <td></td>
+        <td><%= page.approval_units.count %></td>
+        <td>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown">
+              Options <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Send this Campaign</a></li>
+              <li><a href="#">View Responses</a></li>
+              <li><%= link_to 'View this Campaign', page %></li>
+              <li><%= link_to 'Edit this Campaign', edit_page_path(page) %></li>
+              <li><%= link_to 'Destroy this Campaign', page, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

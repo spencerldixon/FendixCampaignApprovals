@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Listing Approval Units</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Format</th>
+      <th>Value</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @approval_units.each do |approval_unit| %>
+      <tr>
+        <td><%= approval_unit.page.name %></td>
+        <td><%= approval_unit.format %></td>
+        <td><%= approval_unit.value %></td>
+        <td><%= approval_unit.position %></td>
+        <td><%= link_to 'Show', approval_unit %></td>
+        <td><%= link_to 'Edit', edit_approval_unit_path(approval_unit) %></td>
+        <td><%= link_to 'Destroy', approval_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Approval unit', new_approval_unit_path %>

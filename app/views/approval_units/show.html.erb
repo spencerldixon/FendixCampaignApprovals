@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @approval_unit.page %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @approval_unit.format %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @approval_unit.value %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @approval_unit.position %>
+</p>
+
+<%= link_to 'Edit', edit_approval_unit_path(@approval_unit) %> |
+<%= link_to 'Back', approval_units_path %>
