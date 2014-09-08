@@ -34,9 +34,8 @@
               Options <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Send this Campaign</a></li>
               <li><a href="#">View Responses</a></li>
-              <li><%= link_to 'View this Campaign', page %></li>
+              <li><%= link_to 'View/Send this Campaign', page %></li>
               <li><%= link_to 'Edit this Campaign', edit_page_path(page) %></li>
               <li><%= link_to 'Destroy this Campaign', page, method: :delete, data: { confirm: 'Are you sure?' } %></li>
             </ul>
@@ -48,5 +47,3 @@
 </table>
 
 <br>
-
-

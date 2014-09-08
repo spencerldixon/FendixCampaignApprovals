@@ -62,6 +62,16 @@ class PagesController < ApplicationController
     end
   end
 
+  def send_campaign params
+    @message = params[:message]
+    @page = Page.find(params[:page])
+    @list = List.find(params[:list])
+
+    page.mail_page(list, message)
+
+    redirect_to root_path, notice: "Your campaign has been queued for sending and will send shortly"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page

@@ -42,7 +42,7 @@ class ApprovalUnit < ActiveRecord::Base
 	  end
 
 	  def iframe(url)
-	  	safe_url = url 
+	  	safe_url = url # TODO - Sanitize incoming urls 
 	  	"<iframe src='#{safe_url}' height='300' width='100%' frameborder='0'></iframe>"
 	  end
 end

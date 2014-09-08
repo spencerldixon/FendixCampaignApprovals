@@ -1,0 +1,26 @@
+<%= form_tag root_path do %>
+  <div class="modal fade" id="send-campaign-modal" tabindex="-1" role="dialog" aria-labelledby="SendCampaignModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Send this Campaign</h4>
+        </div>
+        <div class="modal-body">
+          <p>This will send the <%= @page.name %> campaign to the list selected below with the following custom message:</p>
+          <br>
+          <p class="text-muted">Dear Name,</p>
+          <%= text_area_tag :message, nil, rows: 10, class: "form-control" %>
+          <p class="text-muted">Kind Regards,<br>
+          <%= current_user.full_name %></p>
+          <br>
+          <p>Send this campaign to all contacts on the following list:</p>
+          <%= collection_select :list, :list_id, List.all, :id, :name %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag "Send Campaign", class: "btn btn-large btn-primary" %>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<% end %>

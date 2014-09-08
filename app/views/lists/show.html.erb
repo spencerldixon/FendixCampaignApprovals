@@ -1,23 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+	<h1><%= @list.name %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+<div class="btn-group">
+	<%= button_to 'Edit', edit_list_path(@list), method: :get, class: "btn btn-primary" %>
+</div>
 
-<h3>Network Partners</h3>
-<ul>
-	<% @list.network_partners.order('name ASC').each do |network_partner| %>
-		<li><%= network_partner.full_name %></li>
-	<% end %>
-</ul>
+<div class="btn-group">
+	<%= button_to 'Back', lists_path, method: :get, class: "btn btn-primary" %>
+</div>
 
-<h3>Contacts (Ordered by surname)</h3>
-<ul>
-	<% @list.contacts.order('last_name ASC').each do |contact| %>
-		<li><%= contact.full_name %> (<%= contact.email %>)</li>
-	<% end %>
-</ul>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="page-header">
+			<h3>Network Partners (<%= @list.network_partners.count %>)</h3>
+		</div>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+		
+		<% @list.network_partners.order('name ASC').each do |network_partner| %>
+			<%= network_partner.full_name %><br>
+		<% end %>
+	</div>
+
+	<div class="col-lg-6">
+		<div class="page-header">
+			<h3>Contacts (Ordered by Surname) (<%= @list.contacts.count %>)</h3>
+		</div>
+
+
+		<% @list.contacts.order('last_name ASC').each do |contact| %>
+			<%= contact.full_name %> (<%= contact.email %>)<br>
+		<% end %>
+	</div>
+</div>
