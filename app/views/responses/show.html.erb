@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @response.contact %>
+</p>
+
+<p>
+  <strong>Approval unit:</strong>
+  <%= @response.approval_unit %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @response.visible %>
+</p>
+
+<%= link_to 'Edit', edit_response_path(@response) %> |
+<%= link_to 'Back', responses_path %>

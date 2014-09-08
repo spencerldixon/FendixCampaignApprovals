@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905144952) do
+ActiveRecord::Schema.define(version: 20140908110237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 20140905144952) do
   end
 
   add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
+
+  create_table "responses", force: true do |t|
+    t.integer  "contact_id"
+    t.integer  "approval_unit_id"
+    t.boolean  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "responses", ["approval_unit_id"], name: "index_responses_on_approval_unit_id", using: :btree
+  add_index "responses", ["contact_id"], name: "index_responses_on_contact_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

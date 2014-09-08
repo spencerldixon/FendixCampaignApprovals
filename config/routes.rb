@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :responses
+
   resources :lists
 
   resources :network_partners
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   resources :approval_units
 
   resources :pages
+
+  get '/pages/:id/responses', to: 'pages#responses', as: "page_responses"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

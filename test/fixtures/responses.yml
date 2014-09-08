@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_id: 
+  approval_unit_id: 
+  visible: false
+
+two:
+  contact_id: 
+  approval_unit_id: 
+  visible: false

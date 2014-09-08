@@ -1,17 +1,18 @@
 class ApprovalUnit < ActiveRecord::Base
 	# Relationships
   belongs_to :page
+  has_many :responses, dependent: :destroy
 
   # Methods
   def preview
   	if self.value.present?
 	  	case self.format
 	  	when "Leaderboard"
-	  		code = dfp_code(self.value)
+	  		code = switch_code(self.value)
 	  	when "Skyscraper"
-	  		code = dfp_code(self.value)
+	  		code = switch_code(self.value)
 	  	when "Mediabar"
-	  		code = dfp_code(self.value)
+	  		code = switch_code(self.value)
 	  	when "Landing Page"
 	  		code = iframe(self.value)
 	  	else
@@ -22,23 +23,9 @@ class ApprovalUnit < ActiveRecord::Base
   end
 
   
-	  def dfp_code(value)
-	  	"<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
-			</script>
-			<script type='text/javascript'>
-			GS_googleAddAdSenseService('ca-pub-9003971709719446');
-			GS_googleEnableAllServices();
-			</script>
-			<script type='text/javascript'>
-			GA_googleAddSlot('ca-pub-9003971709719446', '#{value}');
-			</script>
-			<script type='text/javascript'>
-			GA_googleFetchAds();
-			</script>
-
-			<script type='text/javascript'>
-			GA_googleFillSlot('#{value}');
-			</script>"
+	  def switch_code(value)
+	  	"<a href='http://delivery.fendix.net/adserver/click.php?n=aa6bfc75&amp;' target='_blank'>
+	  	<img src='http://delivery.fendix.net/adserver/view.php?zoneid=#{value}&amp;n=aa6bfc75&amp;charset=UTF-8' border='0' alt='' /></a>"
 	  end
 
 	  def iframe(url)

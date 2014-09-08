@@ -1,7 +1,8 @@
 class Page < ActiveRecord::Base
 	# Relationships
 	belongs_to :user
-	has_many :approval_units
+	has_many :approval_units, dependent: :destroy
+	has_many :responses, through: :approval_units
 
 	def mail_page(list, message)
 		self.update_attributes(status: "Sending")

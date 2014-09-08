@@ -62,6 +62,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def responses
+    @page = Page.find(params[:id])
+  end
+
   def send_campaign params
     @message = params[:message]
     @page = Page.find(params[:page])

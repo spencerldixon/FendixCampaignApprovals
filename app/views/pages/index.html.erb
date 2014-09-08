@@ -26,7 +26,7 @@
         <td><%= page.user.first_name %></td>
         <td><%= page.status %></td>
         <td></td>
-        <td></td>
+        <td><%= page.responses.count %></td>
         <td><%= page.approval_units.count %></td>
         <td>
           <div class="btn-group">
@@ -34,7 +34,7 @@
               Options <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">View Responses</a></li>
+              <li><%= link_to 'View Responses', page_responses_path(page) %></li>
               <li><%= link_to 'View/Send this Campaign', page %></li>
               <li><%= link_to 'Edit this Campaign', edit_page_path(page) %></li>
               <li><%= link_to 'Destroy this Campaign', page, method: :delete, data: { confirm: 'Are you sure?' } %></li>
