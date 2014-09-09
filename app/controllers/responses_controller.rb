@@ -15,9 +15,20 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @response = Response.new
+    #@response = Response.new
     @page = Page.find_by(name: params[:page])
     @contact = Contact.find_by(email: params[:contact])
+
+    if @page.nil? or @contact.nil?
+      render 'invalid'
+    else
+      @responses = []
+      for approval_unit in @page.approval_units
+        @responses << approval_unit.responses.build(contact: @contact)
+      end
+
+      render 'new'
+    end
   end
 
   # GET /responses/1/edit
@@ -27,17 +38,18 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(response_params)
+    puts @response
+    # respond_to do |format|
+    #   if @response.save
+    #     format.html { redirect_to @response, notice: 'Response was successfully created.' }
+    #     format.json { render :show, status: :created, location: @response }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @response.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
-    respond_to do |format|
-      if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
-        format.json { render :show, status: :created, location: @response }
-      else
-        format.html { render :new }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
-      end
-    end
+    render 'success' # Thank you page
   end
 
   # PATCH/PUT /responses/1
@@ -72,6 +84,6 @@ class ResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def response_params
-      params.require(:response).permit(:contact_id, :approval_unit_id, :visible)
+      params.permit(:response, :contact_id, :approval_unit_id, :visible)
     end
 end

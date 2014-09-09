@@ -1,34 +1,26 @@
 <h1>New response</h1>
 
-<%= form_for(@response) do |f| %>
-  <% if @response.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
-
-      <ul>
-      <% @response.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_tag responses_path do %>
+  
 
   <% @page.approval_units.each do |au| %>
   	<%= au.format %>
-  	<%= f.hidden_field :contact_id, value: @contact %>
-    <%= f.hidden_field :approval_unit_id, value: au %>
-    <%= f.check_box :visible %><br>
+  	<%= hidden_field_tag :contact, value: @contact %>
+    <%= hidden_field_tag :approval_unit, value: au %>
+    <%= check_box_tag :visible %><br>
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag "Send Response" %>
   </div>
 <% end %>
 
+<%= @responses %>
 
 
 <% if params[:page] %>
 <%= @page.name %>
+<%= @contact.email %>
 <% else %>
 <p>no page set </p>
 <% end %>
