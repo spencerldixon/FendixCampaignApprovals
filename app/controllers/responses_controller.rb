@@ -23,10 +23,9 @@ class ResponsesController < ApplicationController
       render 'invalid'
     else
       @responses = []
-      for approval_unit in @page.approval_units
+      for approval_unit in @page.approval_units.order('position ASC')
         @responses << approval_unit.responses.build(contact: @contact)
       end
-
       render 'new'
     end
   end
@@ -38,18 +37,11 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    puts @response
-    # respond_to do |format|
-    #   if @response.save
-    #     format.html { redirect_to @response, notice: 'Response was successfully created.' }
-    #     format.json { render :show, status: :created, location: @response }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @response.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
-    render 'success' # Thank you page
+    if @responses.each { |response| response.save }
+      render 'success' # Thank you page
+    else
+      render 'invalid'
+    end
   end
 
   # PATCH/PUT /responses/1

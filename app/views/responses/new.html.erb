@@ -1,28 +1,25 @@
-<h1>New response</h1>
+<div class="page-header">
+	<h1>Campaign Approval for <%= @page.name %></h1>
+</div>
 
-<%= form_tag responses_path do %>
-  
-
-  <% @page.approval_units.each do |au| %>
-  	<%= au.format %>
-  	<%= hidden_field_tag :contact, value: @contact %>
-    <%= hidden_field_tag :approval_unit, value: au %>
-    <%= check_box_tag :visible %><br>
-  <% end %>
+<%= form_tag responses_path do |f| %>
+	<% @responses.each_with_index do |response, index| %>
+		<div class="page-header">
+			<h3>Approval <%= index + 1 %>: <%= response.approval_unit.format %></h3>
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<h5 class="text-muted">Checkbox here</h5>
+			</div>
+			<div class="col-lg-9">
+				<div class="alert alert-danger">
+					<%= response.approval_unit.preview %>
+				</div>
+			</div>
+		</div>
+	<% end %>
 
   <div class="actions">
     <%= submit_tag "Send Response" %>
   </div>
 <% end %>
-
-<%= @responses %>
-
-
-<% if params[:page] %>
-<%= @page.name %>
-<%= @contact.email %>
-<% else %>
-<p>no page set </p>
-<% end %>
-
-<%= link_to 'Back', responses_path %>
