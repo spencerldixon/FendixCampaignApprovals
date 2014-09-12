@@ -1,5 +1,5 @@
 <p>Dear <%= @contact.first_name %>,</p>
-<p><%= message %></p>
+<p><%= @message %></p>
 <p><%= link_to "Click here to Approve this Campaign", "http://fendix-campaign-approvals.herokuapp.com/responses/new?page=#{@page.name}&contact=#{@contact.email}" %></p>
 <p>Kind Regards,</p>
 <p>Fendix Media</p>
