@@ -70,9 +70,9 @@ class PagesController < ApplicationController
   def send_campaign
     @message = params[:message]
     @page = Page.find(params[:page])
-    @list = List.find(params[:list])
+    @list = List.find(params[:list][:list_id])
 
-    @page.send_campaign(list, message)
+    @page.send_campaign(@list, @message)
 
     redirect_to root_path, notice: "Your campaign has been queued for sending and will send shortly"
   end

@@ -15,7 +15,7 @@
           <br>
           <p>Send this campaign to all contacts on the following list:</p>
           <%= collection_select :list, :list_id, List.all, :id, :name %>
-          <%= hidden_field_tag :page, value: @page %>
+          <%= hidden_field_tag :page, @page.id %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
