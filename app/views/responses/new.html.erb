@@ -2,24 +2,14 @@
 	<h1>Campaign Approval for <%= @page.name %></h1>
 </div>
 
-<%= form_tag responses_path do |f| %>
-	<% @responses.each_with_index do |response, index| %>
-		<div class="page-header">
-			<h3>Approval <%= index + 1 %>: <%= response.approval_unit.format %></h3>
-		</div>
-		<div class="row">
-			<div class="col-lg-3">
-				<h5 class="text-muted">Checkbox here</h5>
-			</div>
-			<div class="col-lg-9">
-				<div class="alert alert-danger">
-					<%= response.approval_unit.preview %>
-				</div>
-			</div>
-		</div>
-	<% end %>
+<%= @responses.inspect %>
 
-  <div class="actions">
-    <%= submit_tag "Send Response" %>
-  </div>
+<%= form_tag responses_path do %>
+  <%= @responses.each_with_index do |response, index| %>
+    <%= fields_for "responses[#{index}]", response do |f| %>
+      <%= f.check_box :visible %>
+      <%= f.hidden_field :contact_id, value: @contact.id %>
+    <% end %>
+  <% end %>
+  <%= submit_tag "Submit" %>
 <% end %>

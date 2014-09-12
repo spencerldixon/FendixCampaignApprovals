@@ -1,0 +1,17 @@
+<%= fields_for "response[new][]", response do |r| %>
+
+	<div class="page-header">
+		
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-3">
+			<h5 class="text-muted">Checkbox here</h5>
+			<%= r.check_box :visible %>
+		</div>
+		<div class="col-lg-9">
+			<div class="alert alert-danger">
+			</div>
+		</div>
+<% end %>

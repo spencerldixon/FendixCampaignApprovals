@@ -15,18 +15,19 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    #@response = Response.new
     @page = Page.find_by(name: params[:page])
-    @contact = Contact.find_by(email: params[:contact])
+    @contact = Contact.find_by(email: params[:contact]) 
 
     if @page.nil? or @contact.nil?
       render 'invalid'
     else
-      @responses = []
-      for approval_unit in @page.approval_units.order('position ASC')
-        @responses << approval_unit.responses.build(contact: @contact)
-      end
-      render 'new'
+      @responses = Array.new(@page.approval_units.count) { Response.new }
+      # @responses = []
+      # @approval_units = @page.approval_units.order('position ASC')
+
+      # for ad_unit in @approval_units
+      #   @responses << Response.new(approval_unit: ad_unit, contact: @contact)
+      # end
     end
   end
 
@@ -37,8 +38,11 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    if @responses.each { |response| response.save }
-      render 'success' # Thank you page
+    @responses = params[:responses].values.collect { |response| Response.new(response) }
+
+    if @responses.all?(&:valid?)
+      @responses.each(&:save!)
+      render 'success'
     else
       render 'invalid'
     end
@@ -76,6 +80,6 @@ class ResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def response_params
-      params.permit(:response, :contact_id, :approval_unit_id, :visible)
+      params.permit(:response, :contact_id, :approval_unit_id, :visible, :responses)
     end
 end
