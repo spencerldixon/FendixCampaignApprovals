@@ -21,13 +21,12 @@ class ResponsesController < ApplicationController
     if @page.nil? or @contact.nil?
       render 'invalid'
     else
-      @responses = Array.new(@page.approval_units.count) { Response.new }
-      # @responses = []
-      # @approval_units = @page.approval_units.order('position ASC')
-
-      # for ad_unit in @approval_units
-      #   @responses << Response.new(approval_unit: ad_unit, contact: @contact)
-      # end
+      @responses = []
+      @approval_units = @page.approval_units.order('position ASC')
+      
+      for ad_unit in @approval_units
+        @responses << Response.new(approval_unit: ad_unit, contact: @contact)
+      end
     end
   end
 

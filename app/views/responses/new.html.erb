@@ -2,13 +2,13 @@
 	<h1>Campaign Approval for <%= @page.name %></h1>
 </div>
 
-<%= @responses.inspect %>
-
 <%= form_tag responses_path do %>
-  <%= @responses.each_with_index do |response, index| %>
+  <% @responses.each_with_index do |response, index| %>
     <%= fields_for "responses[#{index}]", response do |f| %>
+      <%= response.approval_unit.format %>
       <%= f.check_box :visible %>
-      <%= f.hidden_field :contact_id, value: @contact.id %>
+      <%= f.hidden_field :contact_id, value: response.contact_id %>
+      <%= f.hidden_field :approval_unit_id, value: response.approval_unit_id %>
     <% end %>
   <% end %>
   <%= submit_tag "Submit" %>
