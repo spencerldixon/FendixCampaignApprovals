@@ -1,3 +1,23 @@
 <div class="page-header">
 	<h1>Responses for <%= @page.name %></h1>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Contact</th>
+      <th>Approval Unit</th>
+      <th>Visible?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @responses.each do |response| %>
+      <tr>
+        <td><%= response.contact.full_name %></td>
+        <td><%= response.approval_unit.format %></td>
+        <td><%= response.visible ? "Yes" : "No" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-<%= form_tag root_path do %>
+<%= form_tag send_campaign_path do %>
   <div class="modal fade" id="send-campaign-modal" tabindex="-1" role="dialog" aria-labelledby="SendCampaignModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -15,6 +15,7 @@
           <br>
           <p>Send this campaign to all contacts on the following list:</p>
           <%= collection_select :list, :list_id, List.all, :id, :name %>
+          <%= hidden_field_tag :page, value: @page %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

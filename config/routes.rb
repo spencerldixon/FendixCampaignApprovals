@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :pages
 
   get '/pages/:id/responses', to: 'pages#responses', as: "page_responses"
+  post '/pages/:id/send_campaign', to: 'pages#send_campaign', as: "send_campaign"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

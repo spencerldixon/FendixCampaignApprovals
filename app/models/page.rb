@@ -4,13 +4,14 @@ class Page < ActiveRecord::Base
 	has_many :approval_units, dependent: :destroy
 	has_many :responses, through: :approval_units
 
-	def mail_page(list, message)
+	def send_campaign(list, message)
 		self.update_attributes(status: "Sending")
 
 		list.contacts.each do |contact|
-			Mailer.mail(contact).delay.deliver! # TODO - Or something...
+			CampaignMailer.send_campaign(contact, self, message).deliver! # TODO - Queue this
 		end
 
 		self.update_attributes(status: "Sent")
+		#CampaignMailer.send_campaign(admin).deliver! # or some fuckin bullshit
 	end
 end
