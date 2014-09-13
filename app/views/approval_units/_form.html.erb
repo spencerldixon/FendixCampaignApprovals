@@ -1,33 +1,33 @@
-<%= form_for(@approval_unit) do |f| %>
-  <% if @approval_unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@approval_unit.errors.count, "error") %> prohibited this approval_unit from being saved:</h2>
+<div class="form-horizontal">
+  <%= form_for(@approval_unit) do |f| %>
+    <% if @approval_unit.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@approval_unit.errors.count, "error") %> prohibited this approval_unit from being saved:</h2>
 
-      <ul>
-      <% @approval_unit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @approval_unit.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :page_id, class: "col-lg-2 control-label"  %>
+      <div class="col-lg-5"><%= f.collection_select :page_id, Page.order(:name),:id,:name, {prompt: "Select the campaign page this approval unit is for"}, {class: "form-control"} %></div>
     </div>
+    <div class="form-group">
+      <%= f.label :format, class: "col-lg-2 control-label"  %>
+      <div class="col-lg-5"><%= f.select :format, [["Leaderboard", "Leaderboard"], ["Skyscraper", "Skyscraper"], ["Mediabar", "Mediabar"], ["Landing Page", "Landing Page"]], {prompt: "Select format"}, {class: "form-control"} %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :value, class: "col-lg-2 control-label"  %>
+      <div class="col-lg-5"><%= f.text_field :value, class: "form-control" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :position, class: "col-lg-2 control-label"  %>
+      <div class="col-lg-5"><%= f.select :position, 1..10, {prompt: "Select position"}, {class: "form-control"} %></div>
+    </div>
+    <div class="col-lg-offset-2"><%= f.submit class: "btn btn-primary" %></div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :page_id %>
-    <%= f.collection_select :page_id, Page.order(:name),:id,:name %>
-  </div>
-  <div class="field">
-    <%= f.label :format %><br>
-    <%= f.select :format, [["Leaderboard", "Leaderboard"], ["Skyscraper", "Skyscraper"], ["Mediabar", "Mediabar"], ["Landing Page", "Landing Page"]] %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.select :position, 1..10 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

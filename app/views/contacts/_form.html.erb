@@ -1,37 +1,37 @@
-<%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="form-horizontal">
+  <%= form_for(@contact) do |f| %>
+    <% if @contact.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :first_name, class: "col-lg-2 control-label" %>
+      <div class="col-lg-5"><%= f.text_field :first_name, class: "form-control" %></div>
     </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: "col-lg-2 control-label" %>
+      <div class="col-lg-5"><%= f.text_field :last_name, class: "form-control" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, class: "col-lg-2 control-label" %>
+      <div class="col-lg-5"><%= f.text_field :email, class: "form-control" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :job_title, class: "col-lg-2 control-label" %>
+      <div class="col-lg-5"><%= f.text_field :job_title, class: "form-control" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :network_partner_id, class: "col-lg-2 control-label" %>
+      <div class="col-lg-5"><%= f.collection_select :network_partner_id, NetworkPartner.order(:name),:id,:full_name, {prompt: "Select the network partner this contact belongs to"}, {class: "form-control"} %></div>
+    </div>
+    <div class="col-lg-offset-2"><%= f.submit class: "btn btn-primary" %></div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :job_title %><br>
-    <%= f.text_field :job_title %>
-  </div>
-  <div class="field">
-    <%= f.label :network_partner_id %><br>
-    <%= f.collection_select :network_partner_id, NetworkPartner.order(:name),:id,:full_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
