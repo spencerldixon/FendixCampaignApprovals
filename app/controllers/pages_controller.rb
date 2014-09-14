@@ -72,7 +72,9 @@ class PagesController < ApplicationController
     @page = Page.find(params[:page])
     @list = List.find(params[:list][:list_id])
 
-    @page.send_campaign(@list, @message)
+    #Worker
+    @page.update_attributes(status: "Queued for Sending")
+    Worker.new.async.perform(@page, @list, @message)
 
     redirect_to root_path, notice: "Your campaign has been queued for sending and will send shortly"
   end
