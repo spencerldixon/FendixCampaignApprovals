@@ -22,7 +22,7 @@
         <div class="col-lg-2 control-label"><strong>Network Partners</strong></div>
         <div class="col-lg-2">
         <%= collection_check_boxes(:list, :network_partner_ids, NetworkPartner.all.order('name ASC'), :id, :full_name) do |b| %>
-        <div>
+        <div class="checkbox">
           <%= b.check_box %>
           <%= b.label %>
         </div>
