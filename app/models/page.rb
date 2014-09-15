@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
 			CampaignMailer.send_campaign(contact, self, message).deliver! # TODO - Queue this
 		end
 
-		self.update_attributes(status: "Campaign Sent")
+		self.update_attributes(status: "Sent to #{list.name}")
 		#CampaignMailer.send_campaign(admin).deliver! # or some fuckin bullshit
 	end
 end

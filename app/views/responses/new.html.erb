@@ -2,14 +2,53 @@
 	<h1>Campaign Approval for <%= @page.name %></h1>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Instructions for Use</h3>
+  </div>
+  <div class="panel-body">
+    This page will test the eligability of your trusts intranet site to receive this campaign. There are series of test on this page, each test has a checkbox next to it. If you can visibly see the test advert or landing page, please mark the checkbox. If there are any tests that you can't see, where nothing loads and the red box is empty, please leave these unticked. Please allow this page to load fully before completing the form. Thank you.
+  </div>
+</div>
+
 <%= form_tag responses_path do %>
   <% @responses.each_with_index do |response, index| %>
+    <div class="page-header">
+      <h3><%= response.approval_unit.format %></h3>
+    </div>
     <%= fields_for "responses[#{index}]", response do |f| %>
-      <%= response.approval_unit.format %>
-      <%= f.check_box :visible %>
-      <%= f.hidden_field :contact_id, value: response.contact_id %>
-      <%= f.hidden_field :approval_unit_id, value: response.approval_unit_id %>
+      <div class="row">
+        <div class="col-lg-3">
+          <%= f.check_box :visible %>
+          Please check this box if you can see the advert within the red box to the right.
+        </div>
+
+        <div class="col-lg-9">
+          <div class="alert alert-danger">
+            <%= f.hidden_field :contact_id, value: response.contact_id %>
+            <%= f.hidden_field :approval_unit_id, value: response.approval_unit_id %>
+            <%= response.approval_unit.preview %>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
-  <%= submit_tag "Submit" %>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Declaration and Submission</h3>
+      </div>
+      <div class="panel-body">
+        By submitting this form, you are agreeing that you have marked the form accurately (all boxes have been checked if all creatives arvisible, and creatives or landing pages that can't be seen have been left unchecked). You also agree that this form has beecompleted under no special access levels that give you more free access to the internet than the average user in your organisation.
+      </div>
+    </div>
+  </div>
+
+  <div class="row approval">
+    <div class="col-lg-offset-5">
+      <%= submit_tag "Submit", class: "btn btn-lg btn-success" %>
+      <%= button_tag 'Reset', :type => 'reset', class: "btn btn-lg btn-default" %>
+    </div>
+  </div>
 <% end %>
