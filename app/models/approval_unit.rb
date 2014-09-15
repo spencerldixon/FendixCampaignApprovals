@@ -3,6 +3,8 @@ class ApprovalUnit < ActiveRecord::Base
   belongs_to :page
   has_many :responses, dependent: :destroy
 
+  validates :page_id, :format, :value, presence: true
+
   # Methods
   def preview
   	if self.value.present?

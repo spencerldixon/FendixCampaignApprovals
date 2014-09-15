@@ -6,18 +6,17 @@
           <h4 class="modal-title">Send this Campaign</h4>
         </div>
         <div class="modal-body">
-          <p>This will send the <%= @page.name %> campaign to the list selected below with the following custom message:</p>
+          <p>This will send the <%= @page.name %> campaign to each contact on the list selected below with a custom message. You can write your message in the box below to customise the email. The grey text showing the salutation, link, and valediction will wrap your message. Please do not enter this in the box.</p>
           <br>
           <p class="text-muted">Dear Name,</p>
           <%= text_area_tag :message, nil, rows: 10, class: "form-control" %>
-          <p class="text-muted">
-            <%= link_to "Click here to Approve this Campaign", "http://fendix-campaign-approvals.herokuapp.com/responses/new?page=#{@page.name}&contact=example@example.com" %>
-            <br><br>
-            Kind Regards,<br>
+          <br>
+          <p class="text-muted">Click here to Approve this Campaign</p>
+          <p class="text-muted">Kind Regards,<br>
           Fendix Media</p>
           <br>
           <p>Send this campaign to all contacts on the following list:</p>
-          <%= collection_select :list, :list_id, List.all, :id, :name %>
+          <%= collection_select :list, :list_id, List.all, :id, :name, {}, {class: "form-control"} %>
           <%= hidden_field_tag :page, @page.id %>
         </div>
         <div class="modal-footer">

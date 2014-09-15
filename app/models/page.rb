@@ -4,6 +4,8 @@ class Page < ActiveRecord::Base
 	has_many :approval_units, dependent: :destroy
 	has_many :responses, through: :approval_units
 
+	validates :name, presence: true
+
 	def send_campaign(list, message)
 		self.update_attributes(status: "Sending")
 		list.contacts.each do |contact|
