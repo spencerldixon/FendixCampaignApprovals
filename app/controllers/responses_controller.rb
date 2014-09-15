@@ -41,6 +41,8 @@ class ResponsesController < ApplicationController
 
     if @responses.all?(&:valid?)
       @responses.each(&:save!)
+
+      Worker.new.async.notify_admin_of_response(@responses)
       render 'success'
     else
       render 'invalid'

@@ -65,6 +65,7 @@ class PagesController < ApplicationController
   def responses
     @page = Page.find(params[:id])
     @responses = @page.responses
+    @responses_pie_data = Response.pie_chart_data(@responses)
   end
 
   def send_campaign

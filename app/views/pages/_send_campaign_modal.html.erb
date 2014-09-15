@@ -10,8 +10,11 @@
           <br>
           <p class="text-muted">Dear Name,</p>
           <%= text_area_tag :message, nil, rows: 10, class: "form-control" %>
-          <p class="text-muted">Kind Regards,<br>
-          <%= current_user.full_name %></p>
+          <p class="text-muted">
+            <%= link_to "Click here to Approve this Campaign", "http://fendix-campaign-approvals.herokuapp.com/responses/new?page=#{@page.name}&contact=example@example.com" %>
+            <br><br>
+            Kind Regards,<br>
+          Fendix Media</p>
           <br>
           <p>Send this campaign to all contacts on the following list:</p>
           <%= collection_select :list, :list_id, List.all, :id, :name %>

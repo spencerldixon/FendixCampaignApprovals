@@ -1,9 +1,10 @@
 <h1>Listing responses</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Contact</th>
+      <th>Network Partner</th>
       <th>Approval unit</th>
       <th>Visible</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
     <% @responses.each do |response| %>
       <tr>
         <td><%= response.contact %></td>
+        <td><%= response.network_partner.name %></td>
         <td><%= response.approval_unit %></td>
         <td><%= response.visible %></td>
         <td><%= link_to 'Show', response %></td>

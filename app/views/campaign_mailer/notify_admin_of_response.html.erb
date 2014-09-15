@@ -1,0 +1,32 @@
+<p>A new response has been added to the <%= @page.name %> Campaign Approval Page by <%= @contact.full_name %> (<%= @contact.email %>)<p>
+
+<p>Responses below:</p>
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black; padding: 5px;">Contact</th>
+      <th style="border: 1px solid black; padding: 5px;">Email</th>
+      <th style="border: 1px solid black; padding: 5px;">Network Partner</th>
+      <th style="border: 1px solid black; padding: 5px;">URN</th>
+      <th style="border: 1px solid black; padding: 5px;">Approval unit</th>
+      <th style="border: 1px solid black; padding: 5px;">Visible</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @responses.each do |response| %>
+      <tr>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.contact.full_name %></td>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.contact.email %></td>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.contact.network_partner.name %></td>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.contact.network_partner.urn %></td>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.approval_unit.format %></td>
+        <td style="border: 1px solid black; padding: 5px;"><%= response.visible ? "Yes" : "No" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Click here to view the responses for this campaign", "http://fendix-campaign-approvals.herokuapp.com/pages/#{@page.id}/responses" %> (You will need to log in to view responses)
