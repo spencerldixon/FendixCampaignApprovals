@@ -17,11 +17,10 @@
 		<div class="page-header">
 			<h3>Approval Units for this campaign:</h3>
 		</div>
-		<h4 class="text-info">Hint: You can use the edit link to change the position number of the approval unit to change the order in which they appear on the page.</h4><br>
-
 		<% if @page.approval_units.empty? %>
 			<h4>There are no approval units for this page yet. Go create some. I'm not doing all the work for you.</h4>
 		<% else %>
+		<h4 class="text-info">Hint: You can use the edit link to change the position number of the approval unit to change the order in which they appear on the page.</h4><br>
 			<% @page.approval_units.order('position ASC').each do |au| %>
 				<div class="alert alert-info" role="alert">
 					<h4><%= au.format %> (<%= link_to 'Edit', edit_approval_unit_path(au) %>)</h4>
