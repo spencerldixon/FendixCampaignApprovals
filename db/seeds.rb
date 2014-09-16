@@ -31,3 +31,16 @@ if User.where(email: "claire.allen@fendixmedia.co.uk").blank?
 else
 	puts "claire.allen@fendixmedia.co.uk already exists!"
 end
+
+if User.where(email: "kerry.bingham@fendixmedia.co.uk").blank?
+	User.create!(
+		first_name: "Kerry",
+		last_name: "Bingham",
+		email: "kerry.bingham@fendixmedia.co.uk",
+		password: Rails.application.secrets.kerry_password,
+		password_confirmation: Rails.application.secrets.kerry_password,
+		admin: false)
+	puts "kerry.bingham@fendixmedia.co.uk created with admin privileges!"
+else
+	puts "kerry.bingham@fendixmedia.co.uk already exists!"
+end
