@@ -11,10 +11,23 @@ if User.where(email: "spencer.dixon@fendixmedia.co.uk").blank?
 		first_name: "Spencer",
 		last_name: "Dixon",
 		email: "spencer.dixon@fendixmedia.co.uk",
-		password: "test1234",
-		password_confirmation: "test1234",
+		password: Rails.application.secrets.spencer_password,
+		password_confirmation: Rails.application.secrets.spencer_password,
 		admin: true)
-	puts "Admin user created!"
+	puts "spencer.dixon@fendixmedia.co.uk created with admin privileges!"
 else
-	puts "Database already seeded with admin user"
+	puts "spencer.dixon@fendixmedia.co.uk already exists!"
+end
+
+if User.where(email: "claire.allen@fendixmedia.co.uk").blank?
+	User.create!(
+		first_name: "Claire",
+		last_name: "Allen",
+		email: "claire.allen@fendixmedia.co.uk",
+		password: Rails.application.secrets.claire_password,
+		password_confirmation: Rails.application.secrets.claire_password,
+		admin: true)
+	puts "claire.allen@fendixmedia.co.uk created with admin privileges!"
+else
+	puts "claire.allen@fendixmedia.co.uk already exists!"
 end
