@@ -4,6 +4,7 @@ gem 'figaro'
 gem 'sucker_punch'
 gem 'devise'
 gem 'rails-erd'
+gem 'jquery-datatables-rails', '~> 2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record

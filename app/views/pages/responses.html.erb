@@ -30,9 +30,11 @@
 </div>
 
 
-<table class="table">
+<table class="datatable" id="datatable">
   <thead>
     <tr>
+      <th>URN</th>
+      <th>Network Partner</th>
       <th>Contact</th>
       <th>Approval Unit</th>
       <th>Visible?</th>
@@ -42,6 +44,8 @@
   <tbody>
     <% @responses.each do |response| %>
       <tr>
+        <td><%= response.contact.network_partner.urn %></td>
+        <td><%= response.contact.network_partner.name %></td>
         <td><%= response.contact.full_name %></td>
         <td><%= response.approval_unit.format %></td>
         <td><%= response.visible ? "Yes" : "No" %></td>
