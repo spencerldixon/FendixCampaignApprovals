@@ -38,6 +38,7 @@
       <th>Contact</th>
       <th>Approval Unit</th>
       <th>Visible?</th>
+      <th>Approved At</th>
     </tr>
   </thead>
 
@@ -49,6 +50,7 @@
         <td><%= response.contact.full_name %></td>
         <td><%= response.approval_unit.format %></td>
         <td><%= response.visible ? "Yes" : "No" %></td>
+        <td><%= response.created_at.to_formatted_s(:short) %></td>
       </tr>
     <% end %>
   </tbody>
