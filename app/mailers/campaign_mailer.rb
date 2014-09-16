@@ -12,6 +12,6 @@ class CampaignMailer < ActionMailer::Base
     @responses = responses
     @contact = responses.first.contact
   	@page = responses.first.approval_unit.page
-  	mail(to: @page.user.email, New Response Set for #{@page.name}")
+  	mail(to: @page.user.email, subject: "New Response Set for #{@page.name}")
   end
 end
