@@ -40,7 +40,7 @@ if User.where(email: "kerry.bingham@fendixmedia.co.uk").blank?
 		password: Rails.application.secrets.kerry_password,
 		password_confirmation: Rails.application.secrets.kerry_password,
 		admin: false)
-	puts "kerry.bingham@fendixmedia.co.uk created with admin privileges!"
+	puts "kerry.bingham@fendixmedia.co.uk created!"
 else
 	puts "kerry.bingham@fendixmedia.co.uk already exists!"
 end
