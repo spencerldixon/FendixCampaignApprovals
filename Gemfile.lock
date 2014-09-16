@@ -150,7 +150,7 @@ DEPENDENCIES
   devise
   figaro
   jbuilder (~> 2.0)
-  jquery-datatables-rails (~> 2.2.3)
+  jquery-datatables-rails
   jquery-rails
   pg
   rails (= 4.1.1)
