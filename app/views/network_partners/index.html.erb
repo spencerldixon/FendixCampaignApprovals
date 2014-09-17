@@ -2,7 +2,7 @@
   <h1>Listing Network Partners</h1>
 </div>
 
-<table class="datatable">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Network partner', new_network_partner_path %>
+<%= button_to 'New Network partner', new_network_partner_path, method: :get, class: "btn btn-primary" %>

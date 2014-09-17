@@ -4,8 +4,7 @@ class Contact < ActiveRecord::Base
   has_many :responses
 
   # Validations
-  validates :email, presence: true, 
-  									uniqueness: true
+  validates :email, presence: true #, uniqueness: true
 
   validates :network_partner_id, :first_name, :last_name, presence: true
 
