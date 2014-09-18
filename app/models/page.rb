@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
 		#CampaignMailer.send_campaign(admin).deliver! # or some fuckin bullshit
 	end
 
-	def should_generate_new_friendly_id?
-	  name_changed?
-	end
+	#def should_generate_new_friendly_id?
+	#  name_changed?
+	#end
 end
