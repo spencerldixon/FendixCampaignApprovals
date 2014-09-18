@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @page = Page.find_by(name: params[:page])
+    @page = Page.find_by(slug: params[:page]) 
     @contact = Contact.find_by(email: params[:contact]) 
 
     if @page.nil? or @contact.nil?

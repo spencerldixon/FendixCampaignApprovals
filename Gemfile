@@ -5,6 +5,7 @@ gem 'sucker_punch'
 gem 'devise'
 gem 'rails-erd'
 gem 'jquery-datatables-rails'
+gem 'friendly_id', '~> 5.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
