@@ -14,4 +14,10 @@ class CampaignMailer < ActionMailer::Base
   	@page = responses.first.approval_unit.page
   	mail(to: @page.user.email, bcc: "spencer.dixon@fendixmedia.co.uk", subject: "New Response Set for #{@page.name}")
   end
+
+  def campaign_sent(page, list)
+    @page = page
+    @list = list
+    mail(to: @page.user.email, bcc: "spencer.dixon@fendixmedia.co.uk", subject: "Your campaign has been sent successfully!")
+  end
 end

@@ -63,14 +63,14 @@ class PagesController < ApplicationController
   end
 
   def responses
-    @page = Page.find(params[:id])
+    @page = Page.friendly.find(params[:id])
     @responses = @page.responses
     @responses_pie_data = Response.pie_chart_data(@responses)
   end
 
   def send_campaign
     @message = params[:message]
-    @page = Page.find(params[:page])
+    @page = Page.friendly.find(params[:page])
     @list = List.find(params[:list][:list_id])
 
     #Worker

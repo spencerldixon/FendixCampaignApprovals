@@ -12,4 +12,10 @@ class Worker
   		CampaignMailer.notify_admin_of_response(responses).deliver!
   	end
   end
+
+  def campaign_sent(page, list)
+    ActiveRecord::Base.connection_pool.with_connection do
+      CampaignMailer.campaign_sent(page, list).deliver!
+    end
+  end
 end

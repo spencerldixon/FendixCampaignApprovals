@@ -1,1 +1,7 @@
-<p>Congratulations! Your campaign was sent successfully to the following contacts...</p>
+<p>Congratulations! Your approval page for <%= @page.name %> was sent successfully to the following contacts...</p>
+
+<ul>
+	<% @list.contacts.each do |contact| %>
+		<li><%= contact.email %></li>
+	<% end %>
+</ul>
