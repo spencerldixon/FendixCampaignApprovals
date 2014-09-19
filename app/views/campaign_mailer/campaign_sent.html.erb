@@ -1,4 +1,7 @@
-<p>Congratulations! Your approval page for <%= @page.name %> was sent successfully to the following contacts...</p>
+<p>Congratulations! Your approval page for <%= @page.name %> was sent successfully to the list: <%= @list.name %>. You will be notified of responses as and when they come in via email.</p>
+<br><br>
+<p>This approval was sent to the following contacts...</p>
+<br><br>
 
 <ul>
 	<% @list.contacts.each do |contact| %>

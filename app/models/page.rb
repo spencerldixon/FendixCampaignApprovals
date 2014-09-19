@@ -13,11 +13,11 @@ class Page < ActiveRecord::Base
 	def send_campaign(list, message)
 		self.update_attributes(status: "Sending")
 		list.contacts.each do |contact|
-			CampaignMailer.send_campaign(contact, self, message).deliver! # TODO - Queue this
+			CampaignMailer.send_campaign(contact, self, message).deliver!
 		end
 
 		self.update_attributes(status: "Sent to #{list.name}")
-		#CampaignMailer.send_campaign(admin).deliver! # or some fuckin bullshit
+		CampaignMailer.campaign_sent(self, list).deliver!
 	end
 
 	def should_generate_new_friendly_id?
