@@ -1,0 +1,1 @@
+GIT_LOG = `git log --pretty=format:"%h - %an, %ar : %s" -1`
