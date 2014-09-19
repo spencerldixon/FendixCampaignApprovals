@@ -1,6 +1,6 @@
 class Response < ActiveRecord::Base
   belongs_to :contact
-  belongs_to :approval_unit
+  belongs_to :approval_unit, dependent: :destroy
 
   validates :contact_id, :approval_unit_id, :visible, presence: true
 

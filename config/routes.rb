@@ -1,25 +1,28 @@
 Rails.application.routes.draw do
+  # Root
+  root 'pages#index'
+
+  # Devise
+  devise_for :users
+
+  # Resources
   resources :responses
-
   resources :lists
-
   resources :network_partners
-
   resources :contacts
-
   resources :approval_units
-
   resources :pages
+  resources :users
 
+  # Custom
   get '/pages/:id/responses', to: 'pages#responses', as: "page_responses"
   post '/pages/:id/send_campaign', to: 'pages#send_campaign', as: "send_campaign"
 
-  devise_for :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  
   # You can have the root of your site routed with "root"
-  root 'pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

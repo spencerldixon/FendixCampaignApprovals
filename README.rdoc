@@ -1,28 +1,12 @@
-== README
+== Campaign Approval Page Generator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Create approval pages made up of many adverts and landing pages (referred to as approval units). You can order approval units to dictate how they appear on the page. Create network partners, and create contacts belonging to them. You can then create a list of network partners to send a campaign to, this list will inherit the contacts from each network partner. Use the send campaign button in View/Send campaign, to send the page to a created list along with a custom message. Receipients will receive the custom message with a link to submit responses. Notifications to the page creator are sent upon receipt of a new response set.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Gems:
+
+* Suckerpunch for concurrent background worker
+* Mandrill for email
+* Devise for authentication
+* Postgresql database
+* Friendly_id for slugs

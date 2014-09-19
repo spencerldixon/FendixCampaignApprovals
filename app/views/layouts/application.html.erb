@@ -11,7 +11,8 @@
 	<div class="container">
 		<%= render 'shared/flash' %>
 		<%= yield %>
-		<%= render 'layouts/help_modal' %>
+		<%= render 'layouts/help_modal' unless params[:controller] == "responses" %>
+		<%= render 'layouts/footer' unless params[:controller] == "responses" %>
 	</div>
 </body>
 </html>
