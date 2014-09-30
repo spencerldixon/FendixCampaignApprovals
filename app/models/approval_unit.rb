@@ -31,9 +31,8 @@ class ApprovalUnit < ActiveRecord::Base
 	  end
 
 	  def switch_code_new(value)
-	  	token = SecureRandom.urlsafe_base64
 	  	cachebuster = SecureRandom.urlsafe_base64
-	  	"<iframe id='#{token}' name='#{token}' src='http://delivery.fendix.net/adserver/frame.php?zoneid=#{value}&amp;cb=#{cachebuster}' frameborder='0' scrolling='no'><a href='http://delivery.fendix.net/adserver/click.php?n=ae00f857&amp;cb=#{cachebuster}' target='_blank'><img src='http://delivery.fendix.net/adserver/view.php?zoneid=#{value}&amp;cb=#{cachebuster}&amp;n=ae00f857' border='0' alt='' /></a></iframe>"
+	  	"<script type='text/javascript' src='//delivery.fendix.net/adserver/js.php?zoneid=#{value}&amp;cb=#{cachebuster}&amp;tzo=0'></script>"
 	  end
 
 	  def iframe(url)
