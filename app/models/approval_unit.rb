@@ -32,7 +32,7 @@ class ApprovalUnit < ActiveRecord::Base
 
 	  def switch_code_new(value)
 	  	cachebuster = SecureRandom.urlsafe_base64
-	  	"<script type='text/javascript' src='//delivery.fendix.net/adserver/js.php?zoneid=#{value}&amp;cb=#{cachebuster}&amp;tzo=0'></script>"
+	  	"<script type='text/javascript' src='http://delivery.fendix.net/adserver/js.php?zoneid=#{value}&amp;cb=#{cachebuster}&amp;tzo=0'></script>"
 	  end
 
 	  def iframe(url)
